@@ -28,11 +28,11 @@ def GaussSiedel(A, B, n, x0, tol=1e-6, max_iter=1000):
             x0 = x1.copy()
     return x1
 
-def SOR(A, B, n, x0, tol=1e-6, max_iter=1000):
+def SOR(A, B, n, x0, omega=1, tol=1e-6, max_iter=1000):
     A = np.array(A, dtype=float)
     B = np.array(B, dtype=float)
     x1 = np.zeros((n, 1))
-    omega = 1 # (0 < omega < 2)
+    # (0 < omega < 2)
     for _ in range(max_iter):
         for i in range(n):
             s1 = sum([A[i, j] * x1[j, 0] for j in range(i)])
